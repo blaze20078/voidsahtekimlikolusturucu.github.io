@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vØidsahtekimlikolusturucu - Taslak Deneme Aracı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .warning-box {
+            background-color: #ff5252;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        h2 {
+            text-align: center;
+            color: #ff5252;
+        }
+        .site-title {
+            text-align: center;
+            font-family: monospace;
+            color: #b388ff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #ff1744;
+        }
+        #resultArea {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        .mockup-card {
+            background: #2a2a2a;
+            border: 2px dashed #ff5252;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="site-title">vØidsahtekimlikolusturucu.github.io</div>
+    
+    <div class="warning-box">
+        ⚠️ BİLGİLENDİRME: Bu site tamamen eğlence ve tasarım amaçlı bir arayüz denemesidir. Gerçek bir geçerliliği yoktur, resmi evrak oluşturmaz ve üretilen çıktılar tamamen sahtedir!
+    </div>
+
+    <h2>Örnek Taslak Kimlik Oluşturucu</h2>
+
+    <div class="form-group">
+        <label>İsim:</label>
+        <input type="text" id="nameInput" placeholder="Adınızı girin">
+    </div>
+    
+    <div class="form-group">
+        <label>Soyisim:</label>
+        <input type="text" id="surnameInput" placeholder="Soyadınızı girin">
+    </div>
+
+    <button onclick="showWarning()">Kimlik Oluştur (Örnek)</button>
+
+    <div id="resultArea" class="mockup-card">
+        <h3>Örnek Taslak Görseli</h3>
+        <p id="previewText" style="color: #ff5252; font-weight: bold;"></p>
+        <p>Bu alan tamamen işlevsiz bir test arayüzüdür ve hiçbir resmi belge üretmez.</p>
+    </div>
+</div>
+
+<script>
+function showWarning() {
+    const name = document.getElementById('nameInput').value;
+    const surname = document.getElementById('surnameInput').value;
+    const resultArea = document.getElementById('resultArea');
+    const previewText = document.getElementById('previewText');
+    
+    resultArea.style.display = 'block';
+    if(name || surname) {
+        previewText.innerHTML = `[ÖRNEK / SAHTE ÇIKTI] Sayın ${name} ${surname}, bu belge tamamen geçersizdir, sahtedir ve resmi bir değeri yoktur.`;
+    } else {
+        previewText.innerHTML = `[ÖRNEK / SAHTE ÇIKTI] Bu belge tamamen geçersizdir, sahtedir ve resmi bir değeri yoktur.`;
+    }
+}
+</script>
+
+</body>
+</html>
