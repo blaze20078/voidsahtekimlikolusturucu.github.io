@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimlik Kartı Görselleri</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .card {
+            width: 420px;
+            height: 260px;
+            border-radius: 12px;
+            padding: 15px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            color: #1a1a1a;
+            font-size: 12px;
+        }
+        /* Ön Yüz Stili */
+        .card-front {
+            background: linear-gradient(135deg, #e6f0fa 0%, #ffffff 50%, #e6f0fa 100%);
+            border: 1px solid #d0d8e0;
+        }
+        .card-front .title {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            color: #333333;
+        }
+        .card-front .tc-no {
+            position: absolute;
+            top: 48px;
+            left: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .card-front .photo-box {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            width: 110px;
+            height: 130px;
+            border: 2px dashed #b0b0b0;
+            border-radius: 6px;
+            background: repeating-conic-gradient(#e0e0e0 0% 25%, #ffffff 0% 50%) 50% / 16px 16px;
+        }
+        .card-front .crescent {
+            position: absolute;
+            top: 60px;
+            right: 30px;
+            font-size: 45px;
+            color: #d9383a;
+        }
+        .card-front .fields {
+            position: absolute;
+            top: 80px;
+            left: 145px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .field-label {
+            font-size: 9px;
+            color: #666666;
+        }
+        .field-value {
+            font-size: 12px;
+            font-weight: bold;
+            color: #111111;
+        }
+        .card-front .signature {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            font-family: 'Style Script', cursive, sans-serif;
+            font-style: italic;
+            font-size: 16px;
+        }
+
+        /* Arka Yüz Stili */
+        .card-back {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 60%, #e3f2fd 100%);
+            border: 1px solid #d0d8e0;
+        }
+        .card-back .title {
+            font-size: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .card-back .chip {
+            position: absolute;
+            top: 75px;
+            left: 30px;
+            width: 45px;
+            height: 38px;
+            background: #d4af37;
+            border-radius: 6px;
+            border: 1px solid #b89628;
+        }
+        .card-back .barcode {
+            position: absolute;
+            top: 15px;
+            right: 80px;
+            width: 150px;
+            height: 25px;
+            background: repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 4px);
+        }
+        .card-back .parents {
+            position: absolute;
+            top: 65px;
+            left: 110px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .card-back .mrz {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-family: monospace;
+            font-size: 13px;
+            letter-spacing: 2px;
+            line-height: 1.3;
+            color: #222;
+        }
+
+        /* İndirme Butonu */
+        .btn-download {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #333333;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+        .btn-download:hover {
+            background-color: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Oluşturulan Kimlik Görselleri</h1>
+        <p>Yukarıdaki form aracılığı ile kimlik oluşturduğunuzda burada gözükecektir.<br>Oluşturulan kimlik görselleri aşağıda gösterilmiştir. Butona tıklayarak cihazınıza indirebilirsiniz.</p>
+    </div>
+
+    <div class="cards-container">
+        <!-- ÖN YÜZ -->
+        <div class="card-wrapper">
+            <div class="card card-front">
+                <div class="title">TÜRKIYE CUMHURIYETI KIMLIK KARTI<br><small>REPUBLIC OF TURKEY IDENTITY CARD</small></div>
+                <div class="tc-no"><span class="field-label" style="display:block;">T.C. Kimlik No / TR Identity No</span>12345678911</div>
+                <div class="photo-box"></div>
+                <div class="crescent">☪</div>
+                <div class="fields">
+                    <div>
+                        <div class="field-label">Soyadı / Surname</div>
+                        <div class="field-value">Rastgele</div>
+                    </div>
+                    <div>
+                        <div class="field-label">Adı / Given Name(s)</div>
+                        <div class="field-value">Ornek</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div>
+                            <div class="field-label">Doğum Tarihi / Date of Birth</div>
+                            <div class="field-value">06.12.2010</div>
+                        </div>
+                        <div>
+                            <div class="field-label">Cinsiyeti / Gender</div>
+                            <div class="field-value">E / M</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div>
+                            <div class="field-label">Seri No / Document No</div>
+                            <div class="field-value">AF12846</div>
+                        </div>
+                        <div>
+                            <div class="field-label">Uyruğu / Nationality</div>
+                            <div class="field-value">T.C./TUR</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="field-label">Son Geçerlilik / Valid Until</div>
+                        <div class="field-value">08.12.2029</div>
+                    </div>
+                </div>
+                <div class="signature">Imzası / Signature</div>
+            </div>
+            <button class="btn-download">Görseli İndir</button>
+        </div>
+
+        <!-- ARKA YÜZ -->
+        <div class="card-wrapper">
+            <div class="card card-back">
+                <div class="title">TÜRKİYE CUMHURİYETİ KİMLİK KARTI<br>REPUBLIC OF TURKEY IDENTITY CARD</div>
+                <div class="barcode"></div>
+                <div class="chip"></div>
+                <div class="parents">
+                    <div>
+                        <div class="field-label">Anne Adı / Mother's Name</div>
+                        <div class="field-value" style="font-weight: normal;">hatice</div>
+                    </div>
+                    <div>
+                        <div class="field-label">Baba Adı / Father's Name</div>
+                        <div class="field-value" style="font-weight: normal;">kerim</div>
+                    </div>
+                    <div>
+                        <div class="field-label">Veren Makam / Issued By</div>
+                        <div class="field-value" style="font-size: 10px;">T.C. İÇİŞLERİ BAKANLIĞI</div>
+                    </div>
+                </div>
+                <div class="mrz">
+                    I&lt;TURAF128462&lt;12345678911&lt;&lt;&lt;<br>
+                    1012061M2912082TUR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2<br>
+                    RASTGELE&lt;&lt;ORNEK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+                </div>
+            </div>
+            <button class="btn-download">Görseli İndir</button>
+        </div>
+    </div>
+
+</body>
+</html>
