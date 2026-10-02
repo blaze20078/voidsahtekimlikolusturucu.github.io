@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hako Vøid Kimlik Kartı Oluşturucu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0b0f0e;
+            color: #d1ffd6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #00ff66;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: #111a15;
+            border: 1px solid #1e3d29;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .nav-buttons a, .nav-buttons button {
+            background: #192e21;
+            color: #00ff66;
+            border: 1px solid #285437;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .nav-buttons a:hover, .nav-buttons button:hover {
+            background: #285437;
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group.full {
+            grid-column: span 2;
+        }
+        label {
+            font-size: 0.9rem;
+            color: #8fa896;
+        }
+        input, select {
+            background: #090e0b;
+            border: 1px solid #1b3826;
+            color: #d1ffd6;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #00ff66;
+            box-shadow: 0 0 5px rgba(0, 255, 102, 0.3);
+        }
+        .btn-submit {
+            background: #1b3826;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            padding: 14px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: #00ff66;
+            color: #0b0f0e;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
+        }
+        .preview-section {
+            margin-top: 40px;
+            border-top: 1px solid #1e3d29;
+            padding-top: 25px;
+        }
+        .preview-title {
+            font-size: 1.3rem;
+            color: #00ff66;
+            margin-bottom: 8px;
+        }
+        .preview-desc {
+            font-size: 0.85rem;
+            color: #8fa896;
+            margin-bottom: 20px;
+        }
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* Gerçek Türkiye Kimlik Kartı Tasarımı (Ön Yüz) */
+        .tr-card-front {
+            width: 500px;
+            height: 315px;
+            background: linear-gradient(135deg, #f3f6f4 0%, #e1e9e3 100%);
+            border: 2px solid #b2cbb9;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            padding: 15px;
+            color: #111;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        .tr-card-header {
+            text-align: center;
+            border-bottom: 1px solid #c8d8cc;
+            padding-bottom: 5px;
+        }
+        .tr-card-header h3 {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            color: #2b3a2e;
+            font-weight: bold;
+        }
+        .tr-card-header span {
+            font-size: 0.65rem;
+            color: #4f6653;
+            letter-spacing: 1px;
+        }
+        .tr-card-body {
+            display: flex;
+            gap: 15px;
+            position: relative;
+        }
+        .tr-photo-box {
+            width: 105px;
+            height: 130px;
+            background: #d4ded6;
+            border: 1px solid #9db5a1;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .tr-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tr-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.75rem;
+            color: #2c382f;
+            flex-grow: 1;
+        }
+        .tr-details .label {
+            font-size: 0.55rem;
+            color: #5d7563;
+            text-transform: uppercase;
+            margin-bottom: -2px;
+        }
+        .tr-details .val {
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #112215;
+        }
+        .cag-watermark {
+            position: absolute;
+            right: 15px;
+            bottom: 25px;
+            font-size: 110px;
+            color: rgba(200, 50, 50, 0.08);
+            font-weight: bold;
+            pointer-events: none;
+            line-height: 1;
+        }
+        .tr-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 0.65rem;
+            color: #3b4d40;
+            border-top: 1px solid #c8d8cc;
+            padding-top: 5px;
+        }
+
+        /* Gerçek Türkiye Kimlik Kartı Tasarımı (Arka Yüz) */
+        .tr-card-back {
+            width: 500px;
+            height: 315px;
+            background: linear-gradient(135deg, #f3f6f4 0%, #e1e9e3 100%);
+            border: 2px solid #b2cbb9;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            padding: 15px;
+            color: #111;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        .mrz-zone {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #1a261c;
+            line-height: 1.3;
+            background: rgba(255,255,255,0.5);
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        /* Sistem Uyarı Bannerı (Sahte Kimlik Uyarısı) */
+        .system-warning-banner {
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid #ff3333;
+            color: #ff6666;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 0 10px rgba(255,0,0,0.2);
+        }
+
+        .btn-download {
+            background: #192e21;
+            color: #00ff66;
+            border: 1px solid #285437;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-download:hover {
+            background: #285437;
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sahte Kimlik Oluşturucu</h1>
+
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="https://t.me" target="_blank">Telegram</a>
+            <button onclick="alert('İletişim için Telegram kanalımızı kullanabilirsiniz.')">Contact</button>
+            <a href="#" style="background: #285437; color: #fff;">Bağış Yap!</a>
+        </div>
+
+        <form id="idForm" onsubmit="generateCards(event)">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>İsim:</label>
+                    <input type="text" id="isim" value="Ornek" required>
+                </div>
+                <div class="form-group">
+                    <label>Soyisim:</label>
+                    <input type="text" id="soyisim" value="Rastgele" required>
+                </div>
+                <div class="form-group">
+                    <label>Doğum Tarihi:</label>
+                    <input type="text" id="dogumTarihi" value="06.12.2010" required>
+                </div>
+                <div class="form-group">
+                    <label>Cinsiyet:</label>
+                    <select id="cinsiyet">
+                        <option value="E/M">E/M</option>
+                        <option value="K/F">K/F</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>T.C. Kimlik No:</label>
+                    <input type="text" id="tcNo" value="12345678911" required>
+                </div>
+                <div class="form-group">
+                    <label>Seri No:</label>
+                    <input type="text" id="seriNo" value="AF12846" required>
+                </div>
+                <div class="form-group">
+                    <label>Son Geçerlilik Tarihi:</label>
+                    <input type="text" id="gecerlilik" value="08.12.2029" required>
+                </div>
+                <div class="form-group">
+                    <label>Uyruk:</label>
+                    <input type="text" id="uyruk" value="T.C./TUR">
+                </div>
+                <div class="form-group">
+                    <label>Anne İsmi:</label>
+                    <input type="text" id="anneIsmi" value="hatice" required>
+                </div>
+                <div class="form-group">
+                    <label>Baba Adı:</label>
+                    <input type="text" id="babaAdi" value="kerim" required>
+                </div>
+                <div class="form-group full">
+                    <label>Kimlik Fotoğrafı:</label>
+                    <input type="file" id="fotoFile" accept="image/*">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Kimlik Oluştur</button>
+        </form>
+
+        <div class="preview-section">
+            <div class="preview-title">Oluşturulan Kimlik Görselleri</div>
+            <div class="preview-desc">Oluşturulan kimlik görselleri aşağıda gösterilmiştir.</div>
+
+            <div class="cards-container">
+                <!-- SİSTEM UYARI BANNERI -->
+                <div class="system-warning-banner" id="warningBanner">
+                    ⚠️ [SİSTEM UYARISI]: DİKKAT! OLUŞTURULAN BU KİMLİK KARTI RESMİ GEÇERLİLİĞİ OLMAYAN SAHTE / TASLAK BİR KİMLİKTİR!
+                </div>
+
+                <!-- Ön Yüz -->
+                <div class="card-wrapper">
+                    <div class="tr-card-front" id="frontCard">
+                        <div class="tr-card-header">
+                            <h3>TÜRKİYE CUMHURİYETİ KİMLİK KARTI</h3>
+                            <span>REPUBLIC OF TURKEY IDENTITY CARD</span>
+                        </div>
+                        <div class="tr-card-body">
+                            <div class="tr-photo-box" id="photoPreviewBox">
+                                <span style="font-size:10px; color:#555; text-align:center;">Fotoğraf</span>
+                            </div>
+                            <div class="tr-details">
+                                <div>
+                                    <div class="label">T.C. Kimlik No / TR Identity No</div>
+                                    <div class="val" id="lblTc">12345678911</div>
+                                </div>
+                                <div>
+                                    <div class="label">Soyadı / Surname</div>
+                                    <div class="val" id="lblSoyad">Rastgele</div>
+                                </div>
+                                <div>
+                                    <div class="label">Adı / Given Name(s)</div>
+                                    <div class="val" id="lblAd">Ornek</div>
+                                </div>
+                                <div style="display: flex; gap: 15px;">
+                                    <div>
+                                        <div class="label">Doğum Tarihi</div>
+                                        <div class="val" id="lblDogum" style="font-size:0.7rem;">06.12.2010</div>
+                                    </div>
+                                    <div>
+                                        <div class="label">Cinsiyeti</div>
+                                        <div class="val" id="lblCinsiyet" style="font-size:0.7rem;">E/M</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 15px;">
+                                    <div>
+                                        <div class="label">Seri No</div>
+                                        <div class="val" id="lblSeri" style="font-size:0.7rem;">AF12846</div>
+                                    </div>
+                                    <div>
+                                        <div class="label">Son Geçerlilik</div>
+                                        <div class="val" id="lblGecerlilik" style="font-size:0.7rem;">08.12.2029</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cag-watermark">C+</div>
+                        </div>
+                        <div class="tr-card-footer">
+                            <span>T.C./TUR</span>
+                            <span style="font-style: italic; font-family: cursive; font-size: 0.8rem;" id="lblImza">Ornek Rastgele</span>
+                        </div>
+                    </div>
+                    <button class="btn-download" onclick="alert('Ön yüz görseli indiriliyor...')">Görseli İndir</button>
+                </div>
+
+                <!-- Arka Yüz -->
+                <div class="card-wrapper">
+                    <div class="tr-card-back" id="backCard">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div style="font-size: 0.65rem; color: #444;">
+                                <div style="margin-bottom: 4px;"><span style="color:#666;">Anne Adı:</span> <strong id="lblAnne">hatice</strong></div>
+                                <div><span style="color:#666;">Baba Adı:</span> <strong id="lblBaba">kerim</strong></div>
+                            </div>
+                            <div style="font-size: 0.6rem; text-align: right; color: #444;">
+                                <div>T.C. İÇİŞLERİ BAKANLIĞI</div>
+                                <div>MINISTRY OF INTERIOR</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin: 10px 0;">
+                            <div style="width: 55px; height: 45px; background: #c5b584; border: 1px solid #9c8e5f; border-radius: 4px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#554;">ÇİP</div>
+                            <div style="font-family: monospace; font-size: 0.7rem; letter-spacing: 2px;">|||||| |||||||||||| ||||||||||</div>
+                        </div>
+
+                        <div class="mrz-zone" id="mrzText">
+                            I&lt;TURAF128462&lt;12345678911&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2<br>
+                            1012061M2912082TUR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2<br>
+                            RASTGELE&lt;&lt;ORNEK&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+                        </div>
+                    </div>
+                    <button class="btn-download" onclick="alert('Arka yüz görseli indiriliyor...')">Görseli İndir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fotoFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const box = document.getElementById('photoPreviewBox');
+                    box.innerHTML = `<img src="${event.target.result}" alt="Kimlik Fotoğrafı">`;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function generateCards(e) {
+            e.preventDefault();
+            const isim = document.getElementById('isim').value;
+            const soyisim = document.getElementById('soyisim').value;
+            const dogum = document.getElementById('dogumTarihi').value;
+            const cinsiyet = document.getElementById('cinsiyet').value;
+            const tcNo = document.getElementById('tcNo').value;
+            const seriNo = document.getElementById('seriNo').value;
+            const gecerlilik = document.getElementById('gecerlilik').value;
+            const anne = document.getElementById('anneIsmi').value;
+            const baba = document.getElementById('babaAdi').value;
+
+            document.getElementById('lblAd').innerText = isim;
+            document.getElementById('lblSoyad').innerText = soyisim;
+            document.getElementById('lblDogum').innerText = dogum;
+            document.getElementById('lblCinsiyet').innerText = cinsiyet;
+            document.getElementById('lblTc').innerText = tcNo;
+            document.getElementById('lblSeri').innerText = seriNo;
+            document.getElementById('lblGecerlilik').innerText = gecerlilik;
+            document.getElementById('lblAnne').innerText = anne;
+            document.getElementById('lblBaba').innerText = baba;
+            document.getElementById('lblImza').innerText = isim + " " + soyisim;
+
+            // MRZ güncelleme simülasyonu
+            document.getElementById('mrzText').innerHTML = 
+                `I&lt;TUR${seriNo}&lt;${tcNo}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2<br>` +
+                `1012061M2912082TUR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;2<br>` +
+                `${soyisim.toUpperCase()}&lt;&lt;${isim.toUpperCase()}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;`;
+
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
