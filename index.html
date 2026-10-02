@@ -193,59 +193,60 @@
             width: 100%;
         }
 
-        /* Yeni Türk Kimliği Tasarımı (Ön Yüz - Görsele Uyarlanmış) */
+        /* Orijinal Kimlik Renk ve Tasarımı (Ön Yüz) */
         .id-card-front {
             width: 520px;
             height: 330px;
-            background: linear-gradient(135deg, #e8f0fe 0%, #cce0ff 100%);
-            border: 1px solid #99b3e6;
+            background: linear-gradient(135deg, #f3ebf6 0%, #dbe3f0 50%, #e2eafc 100%);
+            border: 1px solid #b0c4de;
             border-radius: 12px;
             position: relative;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            padding: 16px 20px;
-            color: #102a43;
+            padding: 15px 18px;
+            color: #1a202c;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
         }
-        .id-header {
+        .id-top-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
-        .id-title-area {
+        .id-title-center {
             text-align: center;
             flex-grow: 1;
+            padding-top: 2px;
         }
-        .id-title-area h3 {
-            font-size: 0.8rem;
+        .id-title-center h3 {
+            font-size: 0.82rem;
             font-weight: 800;
-            color: #1a365d;
-            letter-spacing: 0.8px;
+            color: #1e3a8a;
+            letter-spacing: 0.5px;
         }
-        .id-title-area p {
+        .id-title-center p {
             font-size: 0.58rem;
-            color: #2b6cb0;
+            color: #3b82f6;
             font-weight: 700;
         }
-        .id-flag-symbol {
-            color: #e53e3e;
-            font-size: 1.6rem;
-            font-weight: bold;
-            line-height: 1;
+        .c-plus-symbol {
+            font-size: 2rem;
+            color: #b91c1c;
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -3px;
         }
-        .id-body {
+        .id-main-content {
             display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            margin-top: 4px;
+            gap: 15px;
+            position: relative;
         }
-        .id-photo-box {
-            width: 105px;
-            height: 135px;
+        .id-main-photo {
+            width: 110px;
+            height: 140px;
             background: #cbd5e1;
-            border: 1px solid #9aa5b1;
+            border: 1px solid #94a3b8;
             border-radius: 4px;
             overflow: hidden;
             display: flex;
@@ -253,71 +254,100 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        .id-photo-box img {
+        .id-main-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .id-fields {
+        .id-details-grid {
             display: flex;
             flex-direction: column;
-            gap: 5px;
-            width: 100%;
+            gap: 3px;
+            flex-grow: 1;
         }
-        .field-row label {
+        .field-item label {
             display: block;
-            font-size: 0.58rem;
-            color: #4a5568;
+            font-size: 0.55rem;
+            color: #64748b;
             text-transform: uppercase;
-            font-weight: 600;
-        }
-        .field-row span {
-            font-size: 0.82rem;
             font-weight: 700;
-            color: #1a202c;
         }
-        .id-footer-row {
+        .field-item span {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .row-group {
+            display: flex;
+            gap: 15px;
+        }
+        /* Sağ alttaki küçük ek fotoğraf ve imza alanı */
+        .bottom-right-badge {
+            position: absolute;
+            right: 5px;
+            bottom: 2px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        .small-ghost-photo {
+            width: 35px;
+            height: 45px;
+            background: #cbd5e1;
+            border: 1px solid #94a3b8;
+            border-radius: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .small-ghost-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .signature-box {
+            font-family: cursive;
+            font-size: 0.9rem;
+            color: #1e3a8a;
+            font-weight: bold;
+            border-bottom: 1px solid #94a3b8;
+            padding: 0 5px;
+        }
+        .id-card-footer {
             display: flex;
             justify-content: space-between;
-            font-size: 0.65rem;
-            color: #4a5568;
+            font-size: 0.62rem;
+            color: #475569;
             border-top: 1px solid #cbd5e1;
-            padding-top: 6px;
-            align-items: center;
+            padding-top: 5px;
         }
 
-        /* Yeni Türk Kimliği Tasarımı (Arka Yüz - Görsele Uyarlanmış) */
+        /* Orijinal Kimlik Renk ve Tasarımı (Arka Yüz) */
         .id-card-back {
             width: 520px;
             height: 330px;
-            background: linear-gradient(135deg, #e8f0fe 0%, #cce0ff 100%);
-            border: 1px solid #99b3e6;
+            background: linear-gradient(135deg, #f3ebf6 0%, #dbe3f0 50%, #e2eafc 100%);
+            border: 1px solid #b0c4de;
             border-radius: 12px;
             position: relative;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            padding: 16px 20px;
-            color: #102a43;
+            padding: 15px 18px;
+            color: #1a202c;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
         }
-        .back-top-header {
+        .back-top-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .back-top-header span {
-            font-size: 0.58rem;
-            color: #2b6cb0;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .barcode-strip {
-            background: #111;
+        .barcode-box {
+            background: #000;
             height: 32px;
-            width: 65%;
-            margin: 2px 0;
+            width: 55%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -326,34 +356,31 @@
             letter-spacing: 2px;
             font-size: 0.75rem;
         }
-        .back-middle {
+        .back-mid-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
-        .chip-box {
+        .chip-graphic {
             width: 55px;
             height: 55px;
-            background: #e2e8f0;
-            border: 1px solid #a0aec0;
+            background: #cbd5e1;
+            border: 1px solid #94a3b8;
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 9px;
-            color: #4a5568;
+            font-size: 10px;
             font-weight: bold;
+            color: #475569;
         }
-        .mrz-text {
+        .mrz-area {
             font-family: monospace;
             font-size: 0.76rem;
             font-weight: bold;
-            color: #1a202c;
-            letter-spacing: 0.8px;
+            color: #0f172a;
+            letter-spacing: 1px;
             line-height: 1.25;
-            background: rgba(255,255,255,0.4);
-            padding: 4px;
-            border-radius: 4px;
         }
 
         .system-warning-banner {
@@ -453,68 +480,75 @@
 
             <div class="cards-container">
                 <div class="system-warning-banner">
-                    ⚠️️ [SİSTEM UYARISI]: DİKKAT! OLUŞTURULAN BU KİMLİK KARTI RESMİ GEÇERLİLİĞİ OLMAYAN OYUNCU TASLAĞIDIR!
+                    ⚠️ [SİSTEM UYARISI]: DİKKAT! OLUŞTURULAN BU KİMLİK KARTI RESMİ GEÇERLİLİĞİ OLMAYAN OYUNCU TASLAĞIDIR!
                 </div>
 
                 <!-- Ön Yüz -->
                 <div class="card-wrapper">
                     <div class="id-card-front">
-                        <div class="id-header">
-                            <div style="font-size: 0.62rem; color: #4a5568;">
+                        <div class="id-top-row">
+                            <div style="font-size: 0.6rem; color: #475569;">
                                 T.C. Kimlik No / TR Identity No<br>
-                                <span id="lblFrontTc" style="font-size:0.85rem; font-weight:bold; color:#1a202c;">12345678911</span>
+                                <span id="lblFrontTc" style="font-size:0.85rem; font-weight:bold; color:#0f172a;">12345678911</span>
                             </div>
-                            <div class="id-title-area">
+                            <div class="id-title-center">
                                 <h3>TÜRKİYE CUMHURİYETİ KİMLİK KARTI</h3>
                                 <p>REPUBLIC OF TURKEY IDENTITY CARD</p>
                             </div>
-                            <div class="id-flag-symbol">🇹🇷</div>
+                            <div class="c-plus-symbol">C★</div>
                         </div>
-                        <div class="id-body">
-                            <div class="id-photo-box" id="photoPreviewBox">
-                                <span style="font-size:10px; color:#627d98; text-align:center;">Fotoğraf Yok</span>
+
+                        <div class="id-main-content">
+                            <div class="id-main-photo" id="photoPreviewBox">
+                                <span style="font-size:10px; color:#64748b; text-align:center;">Fotoğraf Yok</span>
                             </div>
-                            <div class="id-fields">
-                                <div class="field-row">
+                            <div class="id-details-grid">
+                                <div class="field-item">
                                     <label>Soyadı / Surname</label>
                                     <span id="lblSoyad">Rastgele</span>
                                 </div>
-                                <div class="field-row">
+                                <div class="field-item">
                                     <label>Adı / Given Name(s)</label>
                                     <span id="lblAd">Örnek</span>
                                 </div>
-                                <div style="display: flex; gap: 10px;">
-                                    <div class="field-row" style="flex: 1;">
-                                        <label>Doğum Tarihi</label>
+                                <div class="row-group">
+                                    <div class="field-item" style="flex:1;">
+                                        <label>Doğum Tarihi / Date Of Birth</label>
                                         <span id="lblDogum">06.12.2010</span>
                                     </div>
-                                    <div class="field-row" style="flex: 1;">
+                                    <div class="field-item" style="flex:1;">
                                         <label>Cinsiyet / Gender</label>
                                         <span>E / M</span>
                                     </div>
                                 </div>
-                                <div style="display: flex; gap: 10px;">
-                                    <div class="field-row" style="flex: 1;">
+                                <div class="row-group">
+                                    <div class="field-item" style="flex:1;">
                                         <label>Seri No / Document No</label>
                                         <span id="lblSeri">AF12846</span>
                                     </div>
-                                    <div class="field-row" style="flex: 1;">
+                                    <div class="field-item" style="flex:1;">
                                         <label>Uyruğu / Nationality</label>
                                         <span>T.C./TUR</span>
                                     </div>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-                                    <div class="field-row" style="flex: 1;">
-                                        <label>Son Geçerlilik</label>
-                                        <span id="lblGecerlilik">08.12.2029</span>
-                                    </div>
-                                    <div style="font-size: 0.65rem; color: #4a5568; font-style: italic;">İmzası / Signature</div>
+                                <div class="field-item">
+                                    <label>Son Geçerlilik / Valid Until</label>
+                                    <span id="lblGecerlilik">08.12.2029</span>
                                 </div>
                             </div>
+
+                            <!-- Sağ alttaki küçük hayalet fotoğraf ve imza -->
+                            <div class="bottom-right-badge">
+                                <div class="small-ghost-photo" id="smallPhotoBox">
+                                    <span style="font-size:6px; color:#64748b; text-align:center;">Boş</span>
+                                </div>
+                                <div class="signature-box">imza</div>
+                            </div>
                         </div>
-                        <div class="id-footer-row">
-                            <span style="font-weight:bold; color:#2b6cb0;">N2334M</span>
-                            <span>Hako Vøid Oyuncu Kimliği</span>
+
+                        <div class="id-card-footer">
+                            <span style="font-weight:bold; color:#3b82f6;">N2334M</span>
+                            <span>HAKO VØİD OYUNCU KİMLİĞİ</span>
                         </div>
                     </div>
                     <button class="btn-download" onclick="alert('Ön yüz görseli indiriliyor...')">Görseli İndir</button>
@@ -523,32 +557,32 @@
                 <!-- Arka Yüz -->
                 <div class="card-wrapper">
                     <div class="id-card-back">
-                        <div class="back-top-header">
-                            <span>TÜRKİYE CUMHURİYETİ KİMLİK KARTI</span>
-                            <div class="barcode-strip">|||||| |||||||| ||||</div>
-                            <span style="font-size:0.75rem;">PEN 211621</span>
+                        <div class="back-top-row">
+                            <span style="font-size: 0.62rem; color: #1e3a8a; font-weight: bold;">TÜRKİYE CUMHURİYETİ KİMLİK KARTI</span>
+                            <div class="barcode-box">|||||||| |||||||||| |||||</div>
+                            <span style="font-size: 0.65rem; color: #475569; font-weight: bold;">PEN 211621</span>
                         </div>
-                        
-                        <div class="back-middle">
-                            <div class="id-fields" style="width: 70%;">
-                                <div class="field-row">
+
+                        <div class="back-mid-section">
+                            <div class="id-details-grid" style="width: 70%; gap: 6px;">
+                                <div class="field-item">
                                     <label>Anne Adı / Mother's Name</label>
                                     <span id="lblAnne">hatice</span>
                                 </div>
-                                <div class="field-row">
+                                <div class="field-item">
                                     <label>Baba Adı / Father's Name</label>
                                     <span id="lblBaba">kerim</span>
                                 </div>
-                                <div class="field-row">
+                                <div class="field-item">
                                     <label>Veren Makam / Issuing Authority</label>
-                                    <span style="font-size:0.78rem;">T.C. İÇİŞLERİ BAKANLIĞI</span>
+                                    <span style="font-size: 0.78rem;">T.C. İÇİŞLERİ BAKANLIĞI</span>
                                 </div>
                             </div>
-                            <div class="chip-box">ÇIP</div>
+                            <div class="chip-graphic">ÇIP</div>
                         </div>
 
-                        <div class="mrz-text">
-                            I<TUR<span id="lblMrzSeri">AF128462</span><<12345678911<<<br>
+                        <div class="mrz-area">
+                            I<TUR<span id="lblMrzSeri">AF12846</span><<12345678911<<<br>
                             1012061M2912082TUR<<<<<<<<<<<<<<2<br>
                             <span id="lblMrzAd">RASTGELE<<ORNEK</span><<<<<<<<<<<<<
                         </div>
@@ -588,11 +622,15 @@
                 reader.onload = function(event) {
                     const box = document.getElementById('photoPreviewBox');
                     box.innerHTML = `<img src="${event.target.result}" alt="Kimlik Fotoğrafı">`;
+                    const smallBox = document.getElementById('smallPhotoBox');
+                    smallBox.innerHTML = `<img src="${event.target.result}" alt="Küçük Fotoğraf">`;
                 }
                 reader.readAsDataURL(file);
             } else {
                 const box = document.getElementById('photoPreviewBox');
-                box.innerHTML = `<span style="font-size:10px; color:#627d98; text-align:center;">Fotoğraf Yok</span>`;
+                box.innerHTML = `<span style="font-size:10px; color:#64748b; text-align:center;">Fotoğraf Yok</span>`;
+                const smallBox = document.getElementById('smallPhotoBox');
+                smallBox.innerHTML = `<span style="font-size:6px; color:#64748b; text-align:center;">Boş</span>`;
             }
         });
 
@@ -615,7 +653,7 @@
             document.getElementById('lblGecerlilik').innerText = gecerlilik;
             document.getElementById('lblAnne').innerText = anne;
             document.getElementById('lblBaba').innerText = baba;
-            document.getElementById('lblMrzSeri').innerText = seriNo + "2";
+            document.getElementById('lblMrzSeri').innerText = seriNo;
             document.getElementById('lblMrzAd').innerText = soyisim.toUpperCase() + "<<" + isim.toUpperCase();
 
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
